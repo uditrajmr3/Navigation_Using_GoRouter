@@ -13,11 +13,8 @@ class MyGoRouterNavigationApp extends StatelessWidget {
       title: "GoRouter Implementation",
       routerConfig: RouteGenerator.generateGoRoutes(),
       // routeInformationParser:
-      //     RouteGenerator.generateGoRoutes(AppGlobals.isAuthenticated)
-      //         .routeInformationParser,
-      // routerDelegate:
-      //     RouteGenerator.generateGoRoutes(AppGlobals.isAuthenticated)
-      //         .routerDelegate,
+      //     RouteGenerator.generateGoRoutes().routeInformationParser,
+      // routerDelegate: RouteGenerator.generateGoRoutes().routerDelegate,
     );
   }
 }
