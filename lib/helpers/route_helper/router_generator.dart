@@ -7,6 +7,7 @@ class RouteGenerator {
       AppGlobals.isAuthenticated ? null : "/${AppRoutes.login}";
 
   // GoRouter.of(context).location != "/login"
+  // not usable as _redirect
   static Future<String?> _loginRedirect(
       BuildContext context, GoRouterState s) async {
     if (!AppGlobals.isAuthenticated) {
@@ -66,7 +67,7 @@ class RouteGenerator {
         child: ErrorScreen(),
       ),
       // redirect: (context, state) {
-      //
+      // broke
       // },
     );
     return routes;
