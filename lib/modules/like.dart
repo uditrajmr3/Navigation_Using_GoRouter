@@ -16,18 +16,26 @@ class Like extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                while (GoRouter.of(context).location != "/") {
-                  debugPrint(GoRouter.of(context).location.toString());
-                  GoRouter.of(context).pop();
+                if (GoRouter.of(context).location.isEmpty) {
+                  while (GoRouter.of(context).location != "/") {
+                    GoRouter.of(context).pop();
+                  }
+                } else {
+                  GoRouter.of(context).pushReplacementNamed(AppRoutes.home);
                 }
               },
               child: const Text("Home"),
             ),
             GestureDetector(
               onTap: () {
-                GoRouter.of(context).pop();
-                GoRouter.of(context).pushNamed(AppRoutes.profile,
-                    pathParameters: {"username": "player_unknown_from_like"});
+                if (GoRouter.of(context).location.isEmpty) {
+                  GoRouter.of(context).pop();
+                  GoRouter.of(context).pushNamed(AppRoutes.profile,
+                      pathParameters: {"username": "player_unknown_from_like"});
+                } else {
+                  GoRouter.of(context).pushNamed(AppRoutes.profile,
+                      pathParameters: {"username": "player_unknown_from_like"});
+                }
               },
               child: const Text("Profile"),
             ),
