@@ -1,7 +1,8 @@
 import 'package:go_router_implementation/utils/app_exports.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({Key? key}) : super(key: key);
+  const Profile({Key? key, required this.username}) : super(key: key);
+  final String username;
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +15,13 @@ class Profile extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            Text(username),
             GestureDetector(
-              onTap: () => Navigator.pushNamed(context, AppRoutes.like),
+              onTap: () => GoRouter.of(context).pushNamed(AppRoutes.like),
               child: const Text("Like"),
             ),
             GestureDetector(
-              onTap: () => Navigator.pushNamed(context, AppRoutes.chat),
+              onTap: () => GoRouter.of(context).pushNamed(AppRoutes.chat),
               child: const Text("Chat"),
             ),
           ],

@@ -15,11 +15,13 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             GestureDetector(
-              onTap: () => Navigator.pushNamed(context, AppRoutes.notification),
+              onTap: () =>
+                  GoRouter.of(context).pushNamed(AppRoutes.notification),
               child: const Text("Notification"),
             ),
             GestureDetector(
-              onTap: () => Navigator.pushNamed(context, AppRoutes.profile),
+              onTap: () => GoRouter.of(context).pushNamed(AppRoutes.profile,
+                  pathParameters: {"username": "player_unknown_from_home"}),
               child: const Text("Profile"),
             ),
           ],

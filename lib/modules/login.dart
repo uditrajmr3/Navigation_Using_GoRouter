@@ -5,8 +5,15 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      key: ValueKey("login"),
+    return Scaffold(
+      key: const ValueKey("login"),
+      body: Center(
+        child: GestureDetector(
+          onTap: () =>
+              GoRouter.of(context).pushReplacementNamed(AppRoutes.home),
+          child: const Text("Login"),
+        ),
+      ),
     );
   }
 }

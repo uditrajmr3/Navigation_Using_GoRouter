@@ -8,24 +8,32 @@ class Chat extends StatelessWidget {
     return Scaffold(
       key: const ValueKey("chat"),
       appBar: AppBar(
-      title: const Text("Chats"),
-    ),
+        title: const Text("Chats"),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             GestureDetector(
-              onTap: () =>
-                  Navigator.popUntil(context, (route) => route.isFirst),
+              onTap: () {
+                while (GoRouter.of(context).location != "/") {
+                  debugPrint(GoRouter.of(context).location.toString());
+                  GoRouter.of(context).pop();
+                }
+              },
               child: const Text("Home"),
             ),
             GestureDetector(
-              onTap: () =>
-                  Navigator.popAndPushNamed(context, AppRoutes.profile),
+              onTap: () {
+                GoRouter.of(context).pop();
+                GoRouter.of(context).pushNamed(AppRoutes.profile,
+                    pathParameters: {"username": "player_unknown_from_chat"});
+              },
               child: const Text("Profile"),
             ),
           ],
         ),
-      ),);
+      ),
+    );
   }
 }
