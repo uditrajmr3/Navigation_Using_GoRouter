@@ -11,7 +11,8 @@ class MyGoRouterNavigationApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: "GoROuter Implementation",
-
+      routeInformationParser: RouteGenerator.routes.routeInformationParser,
+      routerDelegate: RouteGenerator.routes.routerDelegate,
     );
   }
 }
