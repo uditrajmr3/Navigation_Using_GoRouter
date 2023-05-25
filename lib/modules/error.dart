@@ -35,7 +35,7 @@ class ErrorScreen extends StatelessWidget {
             ElevatedButton(
               child: const Text('Go back'),
               onPressed: () {
-                Navigator.pushNamed(context, AppRoutes.home);
+                GoRouter.of(context).pushReplacementNamed(AppRoutes.home);
               },
             ),
           ],

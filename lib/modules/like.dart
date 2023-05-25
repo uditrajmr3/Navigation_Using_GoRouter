@@ -15,13 +15,20 @@ class Like extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             GestureDetector(
-              onTap: () =>
-                  Navigator.popUntil(context, (route) => route.isFirst),
+              onTap: () {
+                while (GoRouter.of(context).location != "/") {
+                  debugPrint(GoRouter.of(context).location.toString());
+                  GoRouter.of(context).pop();
+                }
+              },
               child: const Text("Home"),
             ),
             GestureDetector(
-              onTap: () =>
-                  Navigator.popAndPushNamed(context, AppRoutes.profile),
+              onTap: () {
+                GoRouter.of(context).pop();
+                GoRouter.of(context).pushNamed(AppRoutes.profile,
+                    pathParameters: {"username": "player_unknown_from_like"});
+              },
               child: const Text("Profile"),
             ),
           ],
